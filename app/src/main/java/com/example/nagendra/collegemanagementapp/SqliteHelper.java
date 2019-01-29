@@ -6,9 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.nagendra.collegemanagementapp.models.AssignmentModel;
 import com.example.nagendra.collegemanagementapp.models.HodModel;
+import com.example.nagendra.collegemanagementapp.models.StudentModel;
 import com.example.nagendra.collegemanagementapp.models.SubjectModel;
 import com.example.nagendra.collegemanagementapp.models.TeacherModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
@@ -20,6 +25,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String TABLE_HOD = "hod";
     public static final String TABLE_SUBJECT = "subject";
     public static final String TABLE_TEACHER = "teacher";
+    public static final String TABLE_ASSIGNMENT = "assignment";
+    public static final String TABLE_STUDENT = "student";
 
     //hod table data
     public static final String KEY_ID = "id";
@@ -49,6 +56,40 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String KEY_TEACHER_ID = "teacherid";
     public static final String KEY_TEACHER_DEPARTMENT = "teacherdepartment";
 
+    //teacher ASSIGNMENT data
+    public static final String KEY_ASSIGNMENT_ID = "id";
+
+    public static final String KEY_SUBJECT_ASSIGN_NAME = "subjectnameassign";
+
+    public static final String KEY_CHAPTER_ONE = "chapterone";
+    public static final String KEY_NO_ONE = "numberone";
+    public static final String KEY_DATE_ONE = "dateone";
+
+    public static final String KEY_CHAPTER_TWO = "chaptertwo";
+    public static final String KEY_NO_TWO = "numbertwo";
+    public static final String KEY_DATE_TWO = "datetwo";
+
+    public static final String KEY_CHAPTER_THREE = "chapterthree";
+    public static final String KEY_NO_THREE = "numberthree";
+    public static final String KEY_DATE_THREE = "datethree";
+
+    public static final String KEY_CHAPTER_FOUR = "chapterfour";
+    public static final String KEY_NO_FOUR = "numberfour";
+    public static final String KEY_DATE_FOUR = "datefour";
+
+    public static final String KEY_CHAPTER_FIVE = "chapterfive";
+    public static final String KEY_NO_FIVE = "numberfive";
+    public static final String KEY_DATE_FIVE = "datefive";
+
+
+    //teacher table data
+    public static final String KEY_STUD_ID = "id";
+
+    public static final String KEY_STUDENT_NAME = "studentname";
+    public static final String KEY_STUDENT_NUMBER = "studentnumber";
+    public static final String KEY_STUDENT_MAIL_ID = "studentmailid";
+    public static final String KEY_STUDENT_ID = "studentid";
+    public static final String KEY_STUDENT_DEPARTMENT = "studentdepartment";
 
     public SqliteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -89,8 +130,46 @@ public class SqliteHelper extends SQLiteOpenHelper {
             + KEY_TEACHER_DEPARTMENT + " TEXT"
             + " ) ";
 
+    //SQL for creating Assignment table
+    public static final String SQL_TABLE_ASSIGNMENT = " CREATE TABLE " + TABLE_ASSIGNMENT
+            + " ( "
+            + KEY_ASSIGNMENT_ID + " INTEGER PRIMARY KEY, "
+
+            + KEY_SUBJECT_ASSIGN_NAME + " TEXT, "
+
+            + KEY_CHAPTER_ONE + " TEXT, "
+            + KEY_NO_ONE + " TEXT,"
+            + KEY_DATE_ONE + " TEXT,"
+
+            + KEY_CHAPTER_TWO + " TEXT,"
+            + KEY_NO_TWO + " TEXT,"
+            + KEY_DATE_TWO + " TEXT,"
+
+            + KEY_CHAPTER_THREE + " TEXT,"
+            + KEY_NO_THREE + " TEXT,"
+            + KEY_DATE_THREE + " TEXT,"
+
+            + KEY_CHAPTER_FOUR + " TEXT,"
+            + KEY_NO_FOUR + " TEXT,"
+            + KEY_DATE_FOUR + " TEXT,"
+
+            + KEY_CHAPTER_FIVE + " TEXT,"
+            + KEY_NO_FIVE + " TEXT,"
+            + KEY_DATE_FIVE + " TEXT"
+
+            + " ) ";
 
 
+    //SQL for creating student table
+    public static final String SQL_TABLE_STUDENT = " CREATE TABLE " + TABLE_STUDENT
+            + " ( "
+            + KEY_STUD_ID + " INTEGER PRIMARY KEY, "
+            + KEY_STUDENT_NAME + " TEXT, "
+            + KEY_STUDENT_NUMBER + " TEXT, "
+            + KEY_STUDENT_MAIL_ID + " TEXT,"
+            + KEY_STUDENT_ID + " TEXT,"
+            + KEY_STUDENT_DEPARTMENT + " TEXT"
+            + " ) ";
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -99,6 +178,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_TABLE_HOD);
         sqLiteDatabase.execSQL(SQL_TABLE_SUBJECT);
         sqLiteDatabase.execSQL(SQL_TABLE_TEACHER);
+        sqLiteDatabase.execSQL(SQL_TABLE_ASSIGNMENT);
+        sqLiteDatabase.execSQL(SQL_TABLE_STUDENT);
 
 
 
@@ -111,6 +192,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_HOD);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_SUBJECT);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_TEACHER);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ASSIGNMENT);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_STUDENT);
 
         onCreate(sqLiteDatabase);
 
@@ -156,7 +239,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
 
     //username and password are matching or not
-
 
     public HodModel Authenticate(HodModel hodModel) {
 
@@ -221,6 +303,132 @@ public class SqliteHelper extends SQLiteOpenHelper {
         //if user password does not matches or there is no record with that email then return @false
         return null;
 
+    }
+
+    public SubjectModel getData(String subjectname_teacher_text) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        SubjectModel subjectModel =null;
+
+        Cursor cursor1 = db.query(TABLE_SUBJECT,// Selecting Table
+                new String[]{KEY_SUBJECT_NAME, KEY_CHAPTERS, KEY_NOOFTEST,KEY_NOOFPERIOD,KEY_DATE},//Selecting columns want to query
+                KEY_SUBJECT_NAME + "=?",
+                new String[]{subjectname_teacher_text},//Where clause
+                null, null, null);
+
+        if (cursor1 != null && cursor1.moveToFirst()&& cursor1.getCount()>0) {
+            //if cursor has value then in user database there is user associated with this given email
+            subjectModel = new SubjectModel(cursor1.getString(0), cursor1.getString(1), cursor1.getString(2),cursor1.getString(3),cursor1.getString(4));
+
+            //Match both passwords check they are same or not
+            if (subjectname_teacher_text.equalsIgnoreCase(subjectModel.getSubjectname())) {
+                return subjectModel;
+            }
+        }
+
+        return null;
+    }
+
+    public long addAssignment(AssignmentModel assignmentModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values1 = new ContentValues();
+
+
+        values1.put(KEY_SUBJECT_ASSIGN_NAME, assignmentModel.getSubjectname_lecture());
+
+        values1.put(KEY_CHAPTER_ONE, assignmentModel.getChapone());
+        values1.put(KEY_NO_ONE, assignmentModel.getNoone());
+        values1.put(KEY_DATE_TWO, assignmentModel.getDateone());
+
+        values1.put(KEY_CHAPTER_TWO, assignmentModel.getChaptwo());
+        values1.put(KEY_NO_TWO, assignmentModel.getNotwo());
+        values1.put(KEY_DATE_ONE, assignmentModel.getDatetwo());
+
+        values1.put(KEY_CHAPTER_THREE, assignmentModel.getChapthree());
+        values1.put(KEY_NO_THREE, assignmentModel.getNothree());
+        values1.put(KEY_DATE_THREE, assignmentModel.getDatethree());
+
+        values1.put(KEY_CHAPTER_FOUR, assignmentModel.getChapfour());
+        values1.put(KEY_NO_FOUR, assignmentModel.getNofour());
+        values1.put(KEY_DATE_FOUR, assignmentModel.getDatefour());
+
+        values1.put(KEY_CHAPTER_FIVE, assignmentModel.getChapfive());
+        values1.put(KEY_NO_FIVE, assignmentModel.getNofive());
+        values1.put(KEY_DATE_FIVE, assignmentModel.getDatefive());
+
+
+        // insert row
+        long todo_id1 = db.insert(TABLE_ASSIGNMENT, null, values1);
+
+        return todo_id1;
+    }
+
+    public long addStudent(StudentModel studentModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values1 = new ContentValues();
+
+        values1.put(KEY_STUDENT_NAME, studentModel.getStudentname());
+        values1.put(KEY_STUDENT_NUMBER, studentModel.getStudentphonenumber());
+        values1.put(KEY_STUDENT_MAIL_ID, studentModel.getStudentmailid());
+        values1.put(KEY_STUDENT_ID, studentModel.getStudentid());
+        values1.put(KEY_STUDENT_DEPARTMENT, studentModel.getStudentdepartment());
+
+        // insert row
+        long todo_id1 = db.insert(TABLE_STUDENT, null, values1);
+
+        return todo_id1;
+    }
+
+    public StudentModel Authenticate(StudentModel studentModel) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor1 = db.query(TABLE_STUDENT,// Selecting Table
+                new String[]{KEY_STUD_ID, KEY_STUDENT_NAME, KEY_STUDENT_NUMBER, KEY_STUDENT_MAIL_ID,KEY_STUDENT_ID,KEY_STUDENT_DEPARTMENT},//Selecting columns want to query
+                KEY_STUDENT_NAME + "=?",
+                new String[]{studentModel.getStudentname()},//Where clause
+                null, null, null);
+
+        if (cursor1 != null && cursor1.moveToFirst()&& cursor1.getCount()>0) {
+            //if cursor has value then in user database there is user associated with this given email
+            StudentModel studentModel1 = new StudentModel(cursor1.getString(1), cursor1.getString(2), cursor1.getString(3),cursor1.getString(4),cursor1.getString(5));
+
+            //Match both passwords check they are same or not
+            if (studentModel.getStudentid().equalsIgnoreCase(studentModel1.getStudentid())) {
+                return studentModel1;
+            }
+        }
+
+        //if user password does not matches or there is no record with that email then return @false
+        return null;
+
+    }
+
+    public boolean allCount(String name) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        SubjectModel subjectModel =null;
+
+        Cursor cursor1 = db.query(TABLE_STUDENT,// Selecting Table
+                new String[]{KEY_STUDENT_NAME},//Selecting columns want to query
+                KEY_STUDENT_NAME + "=?",
+                new String[]{name},//Where clause
+                null, null, null);
+
+        if (cursor1 != null && cursor1.moveToFirst()&& cursor1.getCount()>0) {
+            //if cursor has value then in user database there is user associated with this given email
+
+
+            //Match both passwords check they are same or not
+            if (name.equalsIgnoreCase(cursor1.getString(0))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 

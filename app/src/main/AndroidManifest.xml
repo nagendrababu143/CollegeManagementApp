@@ -27,7 +27,15 @@
         <activity android:name=".LecturesActivity" />
         <activity android:name=".AssignmentsActivity" />
         <activity android:name=".AttendanceActivity" />
-        <activity android:name=".TestmarksActivity"></activity>
+        <activity android:name=".TestmarksActivity" />
+        <activity android:name=".StudentRegisterActivity" />
+        <activity android:name=".StudentFirstActivity" />
+        <activity android:name=".AssignmentsStudentActivity" />
+        <activity android:name=".AttendanceStudentActivity" />
+        <activity android:name=".TestmarksStudentActivity" />
+        <activity android:name=".AddAttendanceActivity" />
+        <activity android:name=".ViewAttendanceActivity" />
+        <activity android:name=".AddAttendanceEachActivity"></activity>
     </application>
 
 </manifest>
