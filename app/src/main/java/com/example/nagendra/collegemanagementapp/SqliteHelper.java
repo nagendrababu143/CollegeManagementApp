@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.nagendra.collegemanagementapp.models.AssignmentModel;
+import com.example.nagendra.collegemanagementapp.models.AttendanceModel;
 import com.example.nagendra.collegemanagementapp.models.HodModel;
 import com.example.nagendra.collegemanagementapp.models.StudentModel;
 import com.example.nagendra.collegemanagementapp.models.SubjectModel;
@@ -27,6 +28,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String TABLE_TEACHER = "teacher";
     public static final String TABLE_ASSIGNMENT = "assignment";
     public static final String TABLE_STUDENT = "student";
+    public static final String TABLE_ATTENDANCE = "attendance";
 
     //hod table data
     public static final String KEY_ID = "id";
@@ -90,6 +92,15 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String KEY_STUDENT_MAIL_ID = "studentmailid";
     public static final String KEY_STUDENT_ID = "studentid";
     public static final String KEY_STUDENT_DEPARTMENT = "studentdepartment";
+
+    //ATTENDANCE table data
+    public static final String KEY_ATTEND_ID = "id";
+
+    public static final String KEY_ATTEND_NAME = "attendname";
+    public static final String KEY_ATTEND_MONTH = "attendmonth";
+    public static final String KEY_ATTEND_DAY = "attendday";
+    public static final String KEY_ATTEND_STATUS = "attendstatus";
+
 
     public SqliteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -171,6 +182,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
             + KEY_STUDENT_DEPARTMENT + " TEXT"
             + " ) ";
 
+    //SQL for creating attendance table
+    public static final String SQL_TABLE_ATTENDANCE = " CREATE TABLE " + TABLE_ATTENDANCE
+            + " ( "
+            + KEY_ATTEND_ID + " INTEGER PRIMARY KEY, "
+            + KEY_ATTEND_NAME + " TEXT, "
+            + KEY_ATTEND_MONTH + " TEXT, "
+            + KEY_ATTEND_DAY + " TEXT,"
+            + KEY_ATTEND_STATUS + " TEXT"
+            + " ) ";
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
@@ -180,6 +201,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_TABLE_TEACHER);
         sqLiteDatabase.execSQL(SQL_TABLE_ASSIGNMENT);
         sqLiteDatabase.execSQL(SQL_TABLE_STUDENT);
+        sqLiteDatabase.execSQL(SQL_TABLE_ATTENDANCE);
 
 
 
@@ -194,6 +216,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_TEACHER);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ASSIGNMENT);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_STUDENT);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ATTENDANCE);
+
 
         onCreate(sqLiteDatabase);
 
@@ -431,6 +455,42 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public long addAvailability(AttendanceModel attendanceModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values1 = new ContentValues();
+
+        values1.put(KEY_ATTEND_NAME, attendanceModel.getName());
+        values1.put(KEY_ATTEND_MONTH, attendanceModel.getMonth());
+        values1.put(KEY_ATTEND_DAY, attendanceModel.getDay());
+        values1.put(KEY_ATTEND_STATUS, attendanceModel.getStatus());
+
+
+        // insert row
+        long todo_id1 = db.insert(TABLE_ATTENDANCE, null, values1);
+
+        return todo_id1;
+    }
+
+
+
+
+    /*public long addStudent(StudentModel studentModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values1 = new ContentValues();
+
+        values1.put(KEY_STUDENT_NAME, studentModel.getStudentname());
+        values1.put(KEY_STUDENT_NUMBER, studentModel.getStudentphonenumber());
+        values1.put(KEY_STUDENT_MAIL_ID, studentModel.getStudentmailid());
+        values1.put(KEY_STUDENT_ID, studentModel.getStudentid());
+        values1.put(KEY_STUDENT_DEPARTMENT, studentModel.getStudentdepartment());
+
+        // insert row
+        long todo_id1 = db.insert(TABLE_STUDENT, null, values1);
+
+        return todo_id1;
+    }*/
 
     //hod name exists or not
 

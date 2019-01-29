@@ -14,7 +14,7 @@ public class AddAttendanceActivity extends AppCompatActivity {
     EditText editText;
     Button button;
     SqliteHelper sqliteHelper = new SqliteHelper(this);
-
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
