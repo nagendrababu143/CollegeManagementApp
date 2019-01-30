@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.nagendra.collegemanagementapp.models.AddAssessmentModel;
 import com.example.nagendra.collegemanagementapp.models.AssignmentModel;
 import com.example.nagendra.collegemanagementapp.models.AttendanceModel;
 import com.example.nagendra.collegemanagementapp.models.HodModel;
@@ -29,6 +30,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String TABLE_ASSIGNMENT = "assignment";
     public static final String TABLE_STUDENT = "student";
     public static final String TABLE_ATTENDANCE = "attendance";
+    public static final String TABLE_ASSESSMENT = "assessment";
 
     //hod table data
     public static final String KEY_ID = "id";
@@ -100,6 +102,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String KEY_ATTEND_MONTH = "attendmonth";
     public static final String KEY_ATTEND_DAY = "attendday";
     public static final String KEY_ATTEND_STATUS = "attendstatus";
+
+    //ATTENDANCE table data
+    public static final String KEY_ASSESSMENT_ID = "id";
+
+    public static final String KEY_ASSESSMENT_STUDENTNAME = "assessmentstudentname";
+    public static final String KEY_ASSESSMENT_MONTH = "assessmentmonth";
+    public static final String KEY_ASSESSMENT_TEST = "assessmenttest";
+    public static final String KEY_ASSESSMENT_TESTMARKS = "assessmenttestmarks";
 
 
     public SqliteHelper(Context context) {
@@ -192,6 +202,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
             + KEY_ATTEND_STATUS + " TEXT"
             + " ) ";
 
+    //SQL for creating assessment table
+    public static final String SQL_TABLE_ASSESSMENT = " CREATE TABLE " + TABLE_ASSESSMENT
+            + " ( "
+            + KEY_ASSESSMENT_ID + " INTEGER PRIMARY KEY, "
+            + KEY_ASSESSMENT_STUDENTNAME + " TEXT, "
+            + KEY_ASSESSMENT_MONTH + " TEXT, "
+            + KEY_ASSESSMENT_TEST + " TEXT,"
+            + KEY_ASSESSMENT_TESTMARKS + " TEXT"
+            + " ) ";
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
@@ -202,7 +222,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_TABLE_ASSIGNMENT);
         sqLiteDatabase.execSQL(SQL_TABLE_STUDENT);
         sqLiteDatabase.execSQL(SQL_TABLE_ATTENDANCE);
-
+        sqLiteDatabase.execSQL(SQL_TABLE_ASSESSMENT);
 
 
     }
@@ -217,7 +237,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ASSIGNMENT);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_STUDENT);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ATTENDANCE);
-
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_ASSESSMENT);
 
         onCreate(sqLiteDatabase);
 
@@ -503,6 +523,40 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return 0;
 
     }
+
+    public long addAssessment(AddAssessmentModel addAssessmentModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values1 = new ContentValues();
+
+        values1.put(KEY_ASSESSMENT_STUDENTNAME, addAssessmentModel.getStudentname());
+        values1.put(KEY_ASSESSMENT_MONTH, addAssessmentModel.getMonth());
+        values1.put(KEY_ASSESSMENT_TEST, addAssessmentModel.getTest());
+        values1.put(KEY_ASSESSMENT_TESTMARKS, addAssessmentModel.getTestmarks());
+
+
+        // insert row
+        long todo_id1 = db.insert(TABLE_ASSESSMENT, null, values1);
+
+        return todo_id1;
+
+    }
+
+    public int totalMarks(String studentname_viewassessment_text, String month_viewassessment_text) {
+
+        int val=0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT assessmenttestmarks FROM assessment  WHERE assessmentstudentname=? and assessmentmonth=?" ,new String[]{studentname_viewassessment_text,month_viewassessment_text});
+
+        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+
+            for (int i=0;i<cursor.getCount();i++) {
+                val = val + Integer.valueOf(cursor.getString(0));
+            }
+        }
+        return val;
+    }
+
 
 
 
