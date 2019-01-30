@@ -103,7 +103,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String KEY_ATTEND_DAY = "attendday";
     public static final String KEY_ATTEND_STATUS = "attendstatus";
 
-    //ATTENDANCE table data
+    //Assessment table data
     public static final String KEY_ASSESSMENT_ID = "id";
 
     public static final String KEY_ASSESSMENT_STUDENTNAME = "assessmentstudentname";
@@ -555,6 +555,41 @@ public class SqliteHelper extends SQLiteOpenHelper {
             }
         }
         return val;
+    }
+
+    public AssignmentModel getAllTopics(String mysubjectname_lecture_text) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM assignment  WHERE subjectnameassign=?" ,new String[]{mysubjectname_lecture_text});
+
+        if (cursor != null && cursor.moveToFirst()&& cursor.getCount()>0) {
+
+            AssignmentModel assignmentModel = new AssignmentModel();
+
+            assignmentModel.setChapone(cursor.getString(0));
+            assignmentModel.setNoone(cursor.getString(1));
+            assignmentModel.setDateone(cursor.getString(2));
+
+            assignmentModel.setChaptwo(cursor.getString(3));
+            assignmentModel.setNotwo(cursor.getString(4));
+            assignmentModel.setDatetwo(cursor.getString(5));
+
+            assignmentModel.setChapthree(cursor.getString(6));
+            assignmentModel.setNothree(cursor.getString(7));
+            assignmentModel.setDatethree(cursor.getString(8));
+
+            assignmentModel.setChapfour(cursor.getString(9));
+            assignmentModel.setNofour(cursor.getString(10));
+            assignmentModel.setDatefour(cursor.getString(11));
+
+            assignmentModel.setChapfive(cursor.getString(12));
+            assignmentModel.setNofive(cursor.getString(13));
+            assignmentModel.setDatefive(cursor.getString(14));
+
+            return assignmentModel;
+        }
+
+        return null;
     }
 
 
