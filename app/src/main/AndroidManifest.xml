@@ -35,7 +35,9 @@
         <activity android:name=".TestmarksStudentActivity" />
         <activity android:name=".AddAttendanceActivity" />
         <activity android:name=".ViewAttendanceActivity" />
-        <activity android:name=".AddAttendanceEachActivity"></activity>
+        <activity android:name=".AddAttendanceEachActivity" />
+        <activity android:name=".AddAssementActivity" />
+        <activity android:name=".ViewAssementActivity"></activity>
     </application>
 
 </manifest>

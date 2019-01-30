@@ -472,6 +472,38 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return todo_id1;
     }
 
+    public int getTheCount(String studentname_viewattendance_text, String month_viewattendance_text) {
+
+        String val = "Present";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        /*Cursor cursor1 = db.query(TABLE_ATTENDANCE,// Selecting Table
+                new String[]{KEY_ATTEND_NAME,KEY_ATTEND_MONTH,KEY_ATTEND_STATUS},//Selecting columns want to query
+                KEY_ATTEND_NAME + "=? AND" + KEY_ATTEND_MONTH +"=? AND"+KEY_ATTEND_STATUS+"=?",
+                new String[]{studentname_viewattendance_text,month_viewattendance_text,"Present"},//Where clause
+                null, null, null);*/
+
+        //String selectQuery = "SELECT * FROM TABLE_ATTENDANCE " + " WHERE attendname = " + studentname_viewattendance_text + " AND attendmonth = " + month_viewattendance_text + " AND attendstatus = " + val ;
+
+        //SELECT * FROM attendance WHERE attendname="stud" AND attendmonth="march" AND attendstatus="Present";
+
+        Cursor cursor = db.rawQuery("SELECT * FROM attendance  WHERE attendname=? and attendmonth=? and attendstatus=?" ,new String[]{studentname_viewattendance_text,month_viewattendance_text,val});
+
+        /*Cursor cursor1 = db.query(TABLE_ATTENDANCE,// Selecting Table
+                new String[]{KEY_ATTEND_NAME,KEY_ATTEND_MONTH,KEY_ATTEND_STATUS},//Selecting columns want to query
+                KEY_STUDENT_NAME + " =? AND " + KEY_ATTEND_MONTH + " =? AND " + KEY_ATTEND_STATUS + " =? ",
+                new String[]{studentname_viewattendance_text,month_viewattendance_text,val},//Where clause
+                null, null, null);*/
+
+        if (cursor.getCount()>0) {
+            return cursor.getCount();
+        }
+
+        return 0;
+
+    }
+
 
 
 
