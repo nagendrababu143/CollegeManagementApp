@@ -5,13 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AssignmentsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    android:padding="15dp">
 
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Assignments"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40sp"
+            android:gravity="center"/>
         <EditText
+            android:layout_marginTop="40dp"
             android:id="@+id/subjectname_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,18 +44,21 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
+                android:textColor="@color/colorPrimary"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Topic"/>
             <TextView
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Number"/>
             <TextView
+                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -165,5 +180,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update Assignments"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_gravity="center"/>
 </LinearLayout>

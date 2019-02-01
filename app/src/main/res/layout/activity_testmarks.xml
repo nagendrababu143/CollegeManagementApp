@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Add Assement"
+                android:text="Add Assessment"
                 android:textSize="40sp"
                 android:gravity="center"
                 android:padding="60dp"
@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="View Assement"
+                android:text="View Assessment"
                 android:textSize="40sp"
                 android:gravity="center"
                 android:padding="60dp"

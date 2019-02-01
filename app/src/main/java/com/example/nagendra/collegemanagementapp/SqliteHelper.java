@@ -566,25 +566,25 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
             AssignmentModel assignmentModel = new AssignmentModel();
 
-            assignmentModel.setChapone(cursor.getString(0));
-            assignmentModel.setNoone(cursor.getString(1));
-            assignmentModel.setDateone(cursor.getString(2));
+            assignmentModel.setChapone(cursor.getString(2));
+            assignmentModel.setNoone(cursor.getString(3));
+            assignmentModel.setDateone(cursor.getString(4));
 
-            assignmentModel.setChaptwo(cursor.getString(3));
-            assignmentModel.setNotwo(cursor.getString(4));
-            assignmentModel.setDatetwo(cursor.getString(5));
+            assignmentModel.setChaptwo(cursor.getString(5));
+            assignmentModel.setNotwo(cursor.getString(6));
+            assignmentModel.setDatetwo(cursor.getString(7));
 
-            assignmentModel.setChapthree(cursor.getString(6));
-            assignmentModel.setNothree(cursor.getString(7));
-            assignmentModel.setDatethree(cursor.getString(8));
+            assignmentModel.setChapthree(cursor.getString(8));
+            assignmentModel.setNothree(cursor.getString(9));
+            assignmentModel.setDatethree(cursor.getString(10));
 
-            assignmentModel.setChapfour(cursor.getString(9));
-            assignmentModel.setNofour(cursor.getString(10));
-            assignmentModel.setDatefour(cursor.getString(11));
+            assignmentModel.setChapfour(cursor.getString(11));
+            assignmentModel.setNofour(cursor.getString(12));
+            assignmentModel.setDatefour(cursor.getString(13));
 
-            assignmentModel.setChapfive(cursor.getString(12));
-            assignmentModel.setNofive(cursor.getString(13));
-            assignmentModel.setDatefive(cursor.getString(14));
+            assignmentModel.setChapfive(cursor.getString(14));
+            assignmentModel.setNofive(cursor.getString(15));
+            assignmentModel.setDatefive(cursor.getString(16));
 
             return assignmentModel;
         }

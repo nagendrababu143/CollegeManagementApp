@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ViewAttendanceActivity"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/white">
 
     <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Attendance"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"/>
+    <TextView
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter Student Name"/>
@@ -29,7 +37,8 @@
         android:id="@+id/attendeddays_viewattendance_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Attended Days"/>
+        android:text="Attended Days"
+        android:textColor="@color/colorPrimaryDark"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,11 +48,13 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attended Days"/>
+            android:text="Attended Days"
+            android:textColor="@color/colorPrimary"/>
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/attendeddays_viewattendance"/>
     </LinearLayout>
 

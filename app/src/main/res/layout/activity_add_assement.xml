@@ -6,8 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".AddAssementActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Assessment"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"/>
     <EditText
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -17,7 +25,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Month" />
+        android:text="Month"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
     <Spinner
         android:id="@+id/spinner_month_addassessment"
         android:layout_width="match_parent"
@@ -26,7 +37,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test" />
+        android:text="Test"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
 
     <Spinner
         android:id="@+id/spinner_tests"
@@ -35,7 +49,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Text Marks" />
+        android:text="Text Marks"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,9 +60,11 @@
         android:id="@+id/testmarks_addassessment"/>
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/submit_btn_addassessment"/>
 
 

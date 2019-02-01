@@ -5,13 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewAssementActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"
+        android:text="View Assessment"
+        android:gravity="center"/>
 
     <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Enter Student Name"
-    android:id="@+id/studentname_viewassessment"/>
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Student Name"
+        android:id="@+id/studentname_viewassessment"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -20,14 +31,32 @@
         android:id="@+id/month_viewassessment"/>
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/marks_btn_viewassessment"
-        android:text="click to view marks"/>
+        android:text="click to view marks"
+        android:textColor="@color/colorPrimaryDark"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/totalmarks_viewassessment"/>
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Total Marks"
+            android:textColor="@color/colorPrimaryDark"/>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalmarks_viewassessment"/>
+    </LinearLayout>
+
 
 </LinearLayout>

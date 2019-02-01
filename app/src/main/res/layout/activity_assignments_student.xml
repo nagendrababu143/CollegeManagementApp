@@ -5,13 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AssignmentsStudentActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/white">
 
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assignments"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40sp"/>
         <EditText
+            android:layout_marginTop="20dp"
             android:id="@+id/mysubjectname_lecture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:padding="10dp">
 
         <LinearLayout
@@ -35,37 +46,47 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Topic"/>
+                android:text="Topic"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
             <TextView
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number"/>
+                android:text="Number"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
             <TextView
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"/>
+                android:text="Date"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="3"
+            android:layout_marginTop="15dp">
             <TextView
+                android:gravity="center"
                 android:id="@+id/mychapone"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mynoone"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mydateone"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -77,16 +98,19 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
+                android:gravity="center"
                 android:id="@+id/mychaptwo"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mynotwo"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mydatetwo"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -98,16 +122,19 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
+                android:gravity="center"
                 android:id="@+id/mychapthree"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mynothree"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mydatethree"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -119,16 +146,19 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
+                android:gravity="center"
                 android:id="@+id/mychapfour"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mynofour"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mydatefour"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -140,16 +170,19 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
+                android:gravity="center"
                 android:id="@+id/mychapfive"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mynofive"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:gravity="center"
                 android:id="@+id/mydatefive"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -160,10 +193,12 @@
     </LinearLayout>
 
     <Button
+        android:layout_marginTop="20dp"
         android:id="@+id/myassignments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="view Assignments"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimaryDark"/>
 
 </LinearLayout>

@@ -5,13 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LecturesActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lectures"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textColor="@color/colorPrimary"/>
         <EditText
             android:id="@+id/subjectname_teacher"
             android:layout_width="match_parent"
@@ -23,7 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Search"/>
+            android:text="Search"
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
     <LinearLayout
@@ -33,26 +43,93 @@
         android:layout_marginTop="60dp"
         android:padding="40dp">
 
-        <TextView
-            android:id="@+id/nooftest_teacher"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/noofperiod_teacher"
-            android:layout_width="wrap_content"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No Of Tests"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:id="@+id/nooftest_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/date_teacher"
-            android:layout_width="wrap_content"
+            android:weightSum="2">
+            <TextView
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No Of Periods"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:id="@+id/noofperiod_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/chapter_teacher"
-            android:layout_width="wrap_content"
+            android:weightSum="2">
+            <TextView
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:id="@+id/date_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:weightSum="2">
+            <TextView
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No Of Chapters"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="20sp"
+                android:id="@+id/chapter_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 

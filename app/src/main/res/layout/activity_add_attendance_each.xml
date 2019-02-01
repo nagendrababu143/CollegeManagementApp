@@ -5,32 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddAttendanceEachActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/white">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Attendance"
         android:gravity="center"
-        android:textSize="30sp"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_marginTop="20dp">
         <TextView
             android:gravity="center"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student Name"/>
+            android:text="Student Name"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/studentname_attendance"
             android:gravity="center"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
     <TextView
@@ -38,7 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Month"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"/>
 
         <Spinner
@@ -86,9 +95,11 @@
     </RadioGroup>
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/submit"
-        android:text="submit"/>
+        android:text="submit"
+        android:textColor="@color/colorPrimaryDark"/>
 
 </LinearLayout>

@@ -5,9 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TestmarksStudentActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Marks"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"/>
     <EditText
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Your Name"
@@ -20,14 +30,33 @@
         android:id="@+id/month_myassessment"/>
 
     <Button
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/marks_btn_myassessment"
-        android:text="click to view marks"/>
+        android:text="click to view marks"
+        android:textColor="@color/colorPrimaryDark"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/totalmarks_myassessment"/>
+        android:weightSum="2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Marks"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalmarks_myassessment"/>
+    </LinearLayout>
+
 
 </LinearLayout>
